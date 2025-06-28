@@ -1,4 +1,4 @@
-/* iOS Weather App Styles */
+/* iOS 날씨 앱 스타일 */
 
 * {
     margin: 0;
@@ -21,7 +21,7 @@ body {
     min-height: 100vh;
 }
 
-/* Main Weather Display */
+/* 메인 날씨 화면 */
 .main-weather {
     text-align: center;
     padding: 40px 0 60px 0;
@@ -88,7 +88,7 @@ body {
     opacity: 0.7;
 }
 
-/* Forecast Sections */
+/* 예보 섹션들 */
 .forecast-section {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
@@ -111,7 +111,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Hourly Forecast */
+/* 시간별 예보 */
 .hourly-forecast {
     display: flex;
     overflow-x: auto;
@@ -161,7 +161,7 @@ body {
     color: #74b9ff;
 }
 
-/* Weekly Forecast */
+/* 주간 예보 */
 .weekly-forecast {
     padding: 0 20px 20px 20px;
 }
@@ -221,7 +221,7 @@ body {
     text-align: right;
 }
 
-/* Weather Details */
+/* 날씨 상세정보 */
 .weather-details {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
@@ -275,7 +275,7 @@ body {
     font-weight: 600;
 }
 
-/* Footer */
+/* 푸터 */
 .app-footer {
     text-align: center;
     padding: 20px;
@@ -283,7 +283,7 @@ body {
     font-size: 12px;
 }
 
-/* Responsive Design */
+/* 반응형 디자인 */
 @media (max-width: 390px) {
     .weather-app {
         padding: 15px;
@@ -316,7 +316,7 @@ body {
     }
 }
 
-/* Animations */
+/* 애니메이션 */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -346,20 +346,20 @@ body {
     animation-delay: 0.3s;
 }
 
-/* Loading states */
+/* 로딩 상태 */
 .loading {
     opacity: 0.5;
     pointer-events: none;
 }
 
-/* Smooth transitions for dynamic content */
+/* 동적 콘텐츠를 위한 부드러운 전환 */
 .hourly-item,
 .weekly-item,
 .detail-card {
     transition: all 0.3s ease;
 }
 
-/* iOS-style blur backgrounds for different weather conditions */
+/* 다양한 날씨 조건에 대한 iOS 스타일 블러 배경 */
 body.sunny {
     background: linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #fd79a8 100%);
 }
@@ -376,7 +376,7 @@ body.snowy {
     background: linear-gradient(135deg, #ddd 0%, #74b9ff 50%, #0984e3 100%);
 }
 
-/* Glassmorphism effect enhancement */
+/* 글래스모피즘 효과 강화 */
 .main-weather::before,
 .forecast-section::before,
 .weather-details::before {

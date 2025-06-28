@@ -1,18 +1,18 @@
-// iOS Weather App - Mock Data and Functionality
+// iOS 날씨 앱 - 모의 데이터 및 기능
 
 class WeatherApp {
     constructor() {
-        this.currentLocation = 'San Francisco';
+        this.currentLocation = '샌프란시스코';
         this.initializeApp();
     }
 
-    // Mock weather data
+    // 모의 날씨 데이터
     getCurrentWeatherData() {
         return {
-            location: 'San Francisco',
+            location: '샌프란시스코',
             currentTime: this.getCurrentTime(),
             temperature: 72,
-            condition: 'Sunny',
+            condition: '맑음',
             icon: '☀️',
             highTemp: 76,
             lowTemp: 63,
@@ -60,7 +60,7 @@ class WeatherApp {
     }
 
     getWeeklyForecastData() {
-        const days = ['Today', 'Tomorrow', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const days = ['오늘', '내일', '수요일', '목요일', '금요일', '토요일', '일요일'];
         const conditions = [
             { icon: '☀️', high: 76, low: 63, rain: 0 },
             { icon: '⛅', high: 74, low: 61, rain: 10 },
@@ -80,7 +80,7 @@ class WeatherApp {
         }));
     }
 
-    // Utility functions
+    // 유틸리티 함수들
     getCurrentTime() {
         const now = new Date();
         const options = {
@@ -89,17 +89,17 @@ class WeatherApp {
             minute: '2-digit',
             hour12: true
         };
-        return now.toLocaleDateString('en-US', options);
+        return now.toLocaleDateString('ko-KR', options);
     }
 
     formatHour(hour) {
-        if (hour === 0) return '12 AM';
-        if (hour === 12) return '12 PM';
-        if (hour < 12) return `${hour} AM`;
-        return `${hour - 12} PM`;
+        if (hour === 0) return '오전 12시';
+        if (hour === 12) return '오후 12시';
+        if (hour < 12) return `오전 ${hour}시`;
+        return `오후 ${hour - 12}시`;
     }
 
-    // UI Update functions
+    // UI 업데이트 함수들
     updateCurrentWeather() {
         const data = this.getCurrentWeatherData();
         
@@ -119,7 +119,7 @@ class WeatherApp {
         document.getElementById('pressure').textContent = data.pressure;
         document.getElementById('uvIndex').textContent = data.uvIndex;
 
-        // Update body class for background
+        // 배경을 위한 body 클래스 업데이트
         this.updateBackgroundTheme(data.condition);
     }
 
@@ -174,20 +174,20 @@ class WeatherApp {
         document.body.className = '';
         
         switch(condition.toLowerCase()) {
-            case 'sunny':
-            case 'clear':
+            case '맑음':
+            case '맑은':
                 document.body.classList.add('sunny');
                 break;
-            case 'cloudy':
-            case 'overcast':
+            case '흐림':
+            case '구름낀':
                 document.body.classList.add('cloudy');
                 break;
-            case 'rainy':
-            case 'rain':
+            case '비':
+            case '비오는':
                 document.body.classList.add('rainy');
                 break;
-            case 'snowy':
-            case 'snow':
+            case '눈':
+            case '눈오는':
                 document.body.classList.add('snowy');
                 break;
             default:
@@ -195,23 +195,23 @@ class WeatherApp {
         }
     }
 
-    // Animation and interaction functions
+    // 애니메이션 및 상호작용 함수들
     addInteractions() {
-        // Add smooth scrolling for hourly forecast
+        // 시간별 예보를 위한 부드러운 스크롤 추가
         const hourlyContainer = document.getElementById('hourlyForecast');
         let isScrolling = false;
         
         hourlyContainer.addEventListener('scroll', () => {
             if (!isScrolling) {
                 window.requestAnimationFrame(() => {
-                    // Add subtle animation feedback
+                    // 미묘한 애니메이션 피드백 추가
                     isScrolling = false;
                 });
                 isScrolling = true;
             }
         });
 
-        // Add click interactions for cards
+        // 카드에 클릭 상호작용 추가
         const detailCards = document.querySelectorAll('.detail-card');
         detailCards.forEach(card => {
             card.addEventListener('click', () => {
@@ -222,7 +222,7 @@ class WeatherApp {
             });
         });
 
-        // Add hover effects for weekly forecast items
+        // 주간 예보 항목에 호버 효과 추가
         const weeklyItems = document.querySelectorAll('.weekly-item');
         weeklyItems.forEach(item => {
             item.addEventListener('mouseenter', () => {
@@ -235,9 +235,9 @@ class WeatherApp {
         });
     }
 
-    // Simulate data refresh
+    // 데이터 새로고침 시뮬레이션
     refreshData() {
-        // Add loading state
+        // 로딩 상태 추가
         document.querySelectorAll('.forecast-section, .weather-details').forEach(section => {
             section.classList.add('loading');
         });
@@ -247,7 +247,7 @@ class WeatherApp {
             this.updateHourlyForecast();
             this.updateWeeklyForecast();
             
-            // Remove loading state
+            // 로딩 상태 제거
             document.querySelectorAll('.forecast-section, .weather-details').forEach(section => {
                 section.classList.remove('loading');
             });
@@ -256,22 +256,22 @@ class WeatherApp {
         }, 500);
     }
 
-    // Auto-refresh functionality
+    // 자동 새로고침 기능
     startAutoRefresh() {
-        // Update time every minute
+        // 매분마다 시간 업데이트
         setInterval(() => {
             document.getElementById('currentTime').textContent = this.getCurrentTime();
         }, 60000);
 
-        // Simulate weather data updates every 10 minutes
+        // 10분마다 날씨 데이터 업데이트 시뮬레이션
         setInterval(() => {
             this.refreshData();
         }, 600000);
     }
 
-    // Initialize the app
+    // 앱 초기화
     initializeApp() {
-        // Wait for DOM to be fully loaded
+        // DOM이 완전히 로드될 때까지 대기
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 this.loadApp();
@@ -282,18 +282,18 @@ class WeatherApp {
     }
 
     loadApp() {
-        // Initial data load
+        // 초기 데이터 로드
         this.updateCurrentWeather();
         this.updateHourlyForecast();
         this.updateWeeklyForecast();
         
-        // Add interactions
+        // 상호작용 추가
         this.addInteractions();
         
-        // Start auto-refresh
+        // 자동 새로고침 시작
         this.startAutoRefresh();
 
-        // Add pull-to-refresh simulation (for mobile-like experience)
+        // 당겨서 새로고침 시뮬레이션 추가 (모바일과 같은 경험을 위해)
         let startY = 0;
         let currentY = 0;
         let pullDistance = 0;
@@ -307,7 +307,7 @@ class WeatherApp {
             pullDistance = currentY - startY;
             
             if (pullDistance > 100 && window.scrollY === 0) {
-                // Show refresh indicator
+                // 새로고침 표시자 보여주기
                 document.body.style.transform = `translateY(${Math.min(pullDistance * 0.5, 50)}px)`;
             }
         });
@@ -321,9 +321,9 @@ class WeatherApp {
             pullDistance = 0;
         });
 
-        console.log('iOS Weather App initialized successfully!');
+        console.log('iOS 날씨 앱이 성공적으로 초기화되었습니다!');
     }
 }
 
-// Create and initialize the weather app
+// 날씨 앱 생성 및 초기화
 const weatherApp = new WeatherApp();
