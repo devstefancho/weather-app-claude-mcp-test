@@ -1,18 +1,15 @@
-// iOS Weather App - Mock Data and Functionality
-
 class WeatherApp {
     constructor() {
-        this.currentLocation = 'San Francisco';
+        this.currentLocation = '샌프란시스코';
         this.initializeApp();
     }
 
-    // Mock weather data
     getCurrentWeatherData() {
         return {
-            location: 'San Francisco',
+            location: '샌프란시스코',
             currentTime: this.getCurrentTime(),
             temperature: 72,
-            condition: 'Sunny',
+            condition: '맑음',
             icon: '☀️',
             highTemp: 76,
             lowTemp: 63,
@@ -60,7 +57,7 @@ class WeatherApp {
     }
 
     getWeeklyForecastData() {
-        const days = ['Today', 'Tomorrow', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const days = ['오늘', '내일', '수요일', '목요일', '금요일', '토요일', '일요일'];
         const conditions = [
             { icon: '☀️', high: 76, low: 63, rain: 0 },
             { icon: '⛅', high: 74, low: 61, rain: 10 },
@@ -80,7 +77,6 @@ class WeatherApp {
         }));
     }
 
-    // Utility functions
     getCurrentTime() {
         const now = new Date();
         const options = {
@@ -89,17 +85,16 @@ class WeatherApp {
             minute: '2-digit',
             hour12: true
         };
-        return now.toLocaleDateString('en-US', options);
+        return now.toLocaleDateString('ko-KR', options);
     }
 
     formatHour(hour) {
-        if (hour === 0) return '12 AM';
-        if (hour === 12) return '12 PM';
-        if (hour < 12) return `${hour} AM`;
-        return `${hour - 12} PM`;
+        if (hour === 0) return '오전 12시';
+        if (hour === 12) return '오후 12시';
+        if (hour < 12) return `오전 ${hour}시`;
+        return `오후 ${hour - 12}시`;
     }
 
-    // UI Update functions
     updateCurrentWeather() {
         const data = this.getCurrentWeatherData();
         
@@ -111,7 +106,6 @@ class WeatherApp {
         document.getElementById('highTemp').textContent = `H:${data.highTemp}°`;
         document.getElementById('lowTemp').textContent = `L:${data.lowTemp}°`;
         
-        // Update weather details
         document.getElementById('humidity').textContent = `${data.humidity}%`;
         document.getElementById('windSpeed').textContent = data.windSpeed;
         document.getElementById('visibility').textContent = data.visibility;
@@ -119,7 +113,6 @@ class WeatherApp {
         document.getElementById('pressure').textContent = data.pressure;
         document.getElementById('uvIndex').textContent = data.uvIndex;
 
-        // Update body class for background
         this.updateBackgroundTheme(data.condition);
     }
 
@@ -174,20 +167,20 @@ class WeatherApp {
         document.body.className = '';
         
         switch(condition.toLowerCase()) {
-            case 'sunny':
-            case 'clear':
+            case '맑음':
+            case '맑은':
                 document.body.classList.add('sunny');
                 break;
-            case 'cloudy':
-            case 'overcast':
+            case '흐림':
+            case '구름낀':
                 document.body.classList.add('cloudy');
                 break;
-            case 'rainy':
-            case 'rain':
+            case '비':
+            case '비오는':
                 document.body.classList.add('rainy');
                 break;
-            case 'snowy':
-            case 'snow':
+            case '눈':
+            case '눈오는':
                 document.body.classList.add('snowy');
                 break;
             default:
@@ -195,23 +188,19 @@ class WeatherApp {
         }
     }
 
-    // Animation and interaction functions
     addInteractions() {
-        // Add smooth scrolling for hourly forecast
         const hourlyContainer = document.getElementById('hourlyForecast');
         let isScrolling = false;
         
         hourlyContainer.addEventListener('scroll', () => {
             if (!isScrolling) {
                 window.requestAnimationFrame(() => {
-                    // Add subtle animation feedback
                     isScrolling = false;
                 });
                 isScrolling = true;
             }
         });
 
-        // Add click interactions for cards
         const detailCards = document.querySelectorAll('.detail-card');
         detailCards.forEach(card => {
             card.addEventListener('click', () => {
@@ -222,7 +211,6 @@ class WeatherApp {
             });
         });
 
-        // Add hover effects for weekly forecast items
         const weeklyItems = document.querySelectorAll('.weekly-item');
         weeklyItems.forEach(item => {
             item.addEventListener('mouseenter', () => {
@@ -235,9 +223,7 @@ class WeatherApp {
         });
     }
 
-    // Simulate data refresh
     refreshData() {
-        // Add loading state
         document.querySelectorAll('.forecast-section, .weather-details').forEach(section => {
             section.classList.add('loading');
         });
@@ -247,7 +233,6 @@ class WeatherApp {
             this.updateHourlyForecast();
             this.updateWeeklyForecast();
             
-            // Remove loading state
             document.querySelectorAll('.forecast-section, .weather-details').forEach(section => {
                 section.classList.remove('loading');
             });
@@ -256,22 +241,17 @@ class WeatherApp {
         }, 500);
     }
 
-    // Auto-refresh functionality
     startAutoRefresh() {
-        // Update time every minute
         setInterval(() => {
             document.getElementById('currentTime').textContent = this.getCurrentTime();
         }, 60000);
 
-        // Simulate weather data updates every 10 minutes
         setInterval(() => {
             this.refreshData();
         }, 600000);
     }
 
-    // Initialize the app
     initializeApp() {
-        // Wait for DOM to be fully loaded
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 this.loadApp();
@@ -282,18 +262,14 @@ class WeatherApp {
     }
 
     loadApp() {
-        // Initial data load
         this.updateCurrentWeather();
         this.updateHourlyForecast();
         this.updateWeeklyForecast();
         
-        // Add interactions
         this.addInteractions();
         
-        // Start auto-refresh
         this.startAutoRefresh();
 
-        // Add pull-to-refresh simulation (for mobile-like experience)
         let startY = 0;
         let currentY = 0;
         let pullDistance = 0;
@@ -307,7 +283,6 @@ class WeatherApp {
             pullDistance = currentY - startY;
             
             if (pullDistance > 100 && window.scrollY === 0) {
-                // Show refresh indicator
                 document.body.style.transform = `translateY(${Math.min(pullDistance * 0.5, 50)}px)`;
             }
         });
@@ -321,9 +296,7 @@ class WeatherApp {
             pullDistance = 0;
         });
 
-        console.log('iOS Weather App initialized successfully!');
     }
 }
 
-// Create and initialize the weather app
 const weatherApp = new WeatherApp();
