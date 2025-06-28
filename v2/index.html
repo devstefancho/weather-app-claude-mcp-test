@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Daily Weather</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="weather-app">
+        <!-- Animated Background Effects -->
+        <div class="background-effects">
+            <div class="clouds-container">
+                <div class="cloud cloud1"></div>
+                <div class="cloud cloud2"></div>
+                <div class="cloud cloud3"></div>
+            </div>
+            <div class="particles-container"></div>
+            <div class="sun">
+                <div class="sun-rays"></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="app-header">
+                <h1 class="app-title">Weather Today</h1>
+                <div class="location">
+                    <span class="location-icon">📍</span>
+                    <span class="location-text">San Francisco, CA</span>
+                </div>
+                <div class="current-time" id="currentTime"></div>
+            </header>
+
+            <!-- Today's Main Weather -->
+            <section class="today-weather">
+                <div class="main-weather-card">
+                    <div class="weather-icon-container">
+                        <div class="animated-weather-icon" id="mainWeatherIcon">
+                            <div class="icon-element"></div>
+                        </div>
+                    </div>
+                    <div class="temperature-display">
+                        <span class="current-temp" id="currentTemp">22°</span>
+                        <div class="temp-range">
+                            <span class="high-temp" id="highTemp">25°</span>
+                            <span class="low-temp" id="lowTemp">18°</span>
+                        </div>
+                    </div>
+                    <div class="weather-description">
+                        <h2 class="condition" id="weatherCondition">Partly Cloudy</h2>
+                        <p class="feels-like">Feels like <span id="feelsLike">24°</span></p>
+                    </div>
+                </div>
+
+                <!-- Weather Details -->
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">💧</div>
+                        <div class="detail-info">
+                            <span class="detail-value" id="humidity">65%</span>
+                            <span class="detail-label">Humidity</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">💨</div>
+                        <div class="detail-info">
+                            <span class="detail-value" id="windSpeed">12 km/h</span>
+                            <span class="detail-label">Wind</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">👁</div>
+                        <div class="detail-info">
+                            <span class="detail-value" id="visibility">10 km</span>
+                            <span class="detail-label">Visibility</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">🌡</div>
+                        <div class="detail-info">
+                            <span class="detail-value" id="pressure">1013 hPa</span>
+                            <span class="detail-label">Pressure</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sunrise/Sunset -->
+            <section class="sun-info">
+                <div class="sun-card">
+                    <div class="sunrise">
+                        <div class="sun-icon sunrise-icon">🌅</div>
+                        <div class="sun-details">
+                            <span class="sun-label">Sunrise</span>
+                            <span class="sun-time" id="sunriseTime">6:24 AM</span>
+                        </div>
+                    </div>
+                    <div class="sun-progress">
+                        <div class="sun-arc">
+                            <div class="sun-path"></div>
+                            <div class="sun-position" id="sunPosition"></div>
+                        </div>
+                    </div>
+                    <div class="sunset">
+                        <div class="sun-icon sunset-icon">🌇</div>
+                        <div class="sun-details">
+                            <span class="sun-label">Sunset</span>
+                            <span class="sun-time" id="sunsetTime">7:42 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hourly Forecast -->
+            <section class="hourly-forecast">
+                <h3 class="section-title">Today's Hourly Forecast</h3>
+                <div class="hourly-container" id="hourlyContainer">
+                    <!-- Hourly cards will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Temperature Chart -->
+            <section class="temperature-chart">
+                <h3 class="section-title">Temperature Trend</h3>
+                <div class="chart-container">
+                    <canvas id="temperatureChart" width="800" height="200"></canvas>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

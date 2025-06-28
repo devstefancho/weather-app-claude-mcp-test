@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="weather-app">
+        <!-- Main Weather Display -->
+        <div class="main-weather">
+            <div class="location-info">
+                <h1 class="location-name" id="locationName">San Francisco</h1>
+                <p class="current-time" id="currentTime">Monday, 2:30 PM</p>
+            </div>
+            
+            <div class="current-weather">
+                <div class="weather-icon" id="weatherIcon">☀️</div>
+                <div class="temperature" id="currentTemp">72°</div>
+                <div class="weather-description" id="weatherDescription">Sunny</div>
+                <div class="temp-range">
+                    <span class="high-temp" id="highTemp">H:76°</span>
+                    <span class="low-temp" id="lowTemp">L:63°</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hourly Forecast -->
+        <div class="forecast-section">
+            <div class="section-header">
+                <h2>Hourly Forecast</h2>
+            </div>
+            <div class="hourly-forecast" id="hourlyForecast">
+                <!-- Hourly items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Weekly Forecast -->
+        <div class="forecast-section">
+            <div class="section-header">
+                <h2>10-Day Forecast</h2>
+            </div>
+            <div class="weekly-forecast" id="weeklyForecast">
+                <!-- Weekly items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Weather Details -->
+        <div class="weather-details">
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-icon">💧</div>
+                    <div class="detail-info">
+                        <div class="detail-label">Humidity</div>
+                        <div class="detail-value" id="humidity">65%</div>
+                    </div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-icon">💨</div>
+                    <div class="detail-info">
+                        <div class="detail-label">Wind</div>
+                        <div class="detail-value" id="windSpeed">8 mph NW</div>
+                    </div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-icon">👁️</div>
+                    <div class="detail-info">
+                        <div class="detail-label">Visibility</div>
+                        <div class="detail-value" id="visibility">10 mi</div>
+                    </div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-icon">🌡️</div>
+                    <div class="detail-info">
+                        <div class="detail-label">Feels Like</div>
+                        <div class="detail-value" id="feelsLike">74°</div>
+                    </div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-icon">📊</div>
+                    <div class="detail-info">
+                        <div class="detail-label">Pressure</div>
+                        <div class="detail-value" id="pressure">30.12 in</div>
+                    </div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-icon">☀️</div>
+                    <div class="detail-info">
+                        <div class="detail-label">UV Index</div>
+                        <div class="detail-value" id="uvIndex">6</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="app-footer">
+            <p>Weather data provided for demonstration purposes</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
